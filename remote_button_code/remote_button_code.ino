@@ -19,6 +19,8 @@ enum connection_state { //Not sure if this will be useful, but could make it way
     PACKET_RECIEVED
 };
 
+bool stateChange;
+
 connection_state state = NO_CONNECTION;
 
 void setup() {
@@ -28,17 +30,22 @@ void setup() {
   pinMode(LED, OUTPUT); digitalWrite(LED, LOW);
   Keyboard.begin();
   state = NO_CONNECTION;
+  stateChange = true;
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  ledState(state);
+  if(stateChagnge) {
+    stateChange = false;
+    ledState(state);
+  }
 }
 
 void ledState(int i) {
   switch (i) {
     case 0:
       //Need to do something cool here with hardware timers
+      
       break;
     case 1:
       //Need to do something cool here with hardware timers
